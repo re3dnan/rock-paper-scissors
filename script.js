@@ -56,12 +56,9 @@ function playRound(humanChoice, computerChoice){
 }
 
 function playGame(){
-    
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
+    for(let i = 0; i<5; i++){
+        playRound(getHumanChoice(), getComputerChoice());
+    }
 }
 
 let humanScore = 0;
