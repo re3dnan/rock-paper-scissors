@@ -12,12 +12,6 @@ function getComputerChoice(){
     return choice
 }
 
-
-function getHumanChoice(){
-
-    return prompt("choose rock, paper or scissors: ");
-}
-
 function playRound(humanChoice, computerChoice){
     humanChoice = humanChoice.toLowerCase();
 
@@ -55,13 +49,23 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-function playGame(){
-    for(let i = 0; i<5; i++){
-        playRound(getHumanChoice(), getComputerChoice());
-    }
-}
-
 let humanScore = 0;
 let computerScore = 0;
-playGame()
-console.log(`Human Score: ${humanScore} \nComputer Score: ${computerScore}`);
+
+let scoreBoard = document.querySelector("#score");
+scoreBoard.style.whiteSpace = "pre";
+scoreBoard.textContent = `Human:     ${humanScore}\nComputer: ${computerScore}`
+
+let choice = document.querySelector("#choices");
+choice.addEventListener("click", (e) => {
+
+    playRound(e.target.id, getComputerChoice());
+    scoreBoard.textContent = `Human:     ${humanScore}\nComputer: ${computerScore}`
+    
+    if(humanScore === 5){
+        scoreBoard.textContent += "\nTHE HUMAN TAME THE MACHINES!!!"
+    }
+    else if(computerScore === 5){
+        scoreBoard.textContent += "\nTHE MACHINES ENSLAVE THE HUMANS!!!"
+    }
+});
