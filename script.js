@@ -15,35 +15,37 @@ function getComputerChoice(){
 function playRound(humanChoice, computerChoice){
     humanChoice = humanChoice.toLowerCase();
 
-    if(humanChoice === computerChoice)
+    if(humanChoice === computerChoice){
         console.log("DRAW! Great minds think alike!");
+        announcement.textContent = "DRAW! Great minds think alike!"
+    }
     else if(humanChoice === "rock"){
         if(computerChoice === "scissors"){
-            console.log("WIN! human rocks the machine!");
+            announcement.textContent = "WIN! human rocks the machine!";
             humanScore+=1;
         }
         else if(computerChoice === "paper"){
-            console.log("LOSE! the machines are comming!");
+            announcement.textContent = "LOSE! the machines are comming!";
             computerScore+=1;
         }
     }
     else if(humanChoice === "paper"){
         if(computerChoice === "rock"){
-            console.log("WIN! human>>>tincans!");
+            announcement.textContent = "WIN! human>>>tincans!";
             humanScore+=1;
         }
         else if(computerChoice === "scissors"){
-            console.log("LOSE! clankers are taking over!");
+            announcement.textContent = "LOSE! clankers are taking over!";
             computerScore+=1;
         }
     }
     else if(humanChoice === "scissors"){
         if(computerChoice === "paper"){
-            console.log("WIN! clank clank, plap plap!");
+            announcement.textContent = "WIN! clank clank, plap plap!";
             humanScore+=1;
         }
         else if(computerChoice === "rock"){
-            console.log("LOSE! welcome your AI overlords!");
+            announcement.textContent = "LOSE! welcome your AI overlords!";
             computerScore+=1;
         }
     }
@@ -56,6 +58,9 @@ let scoreBoard = document.querySelector("#score");
 scoreBoard.style.whiteSpace = "pre";
 scoreBoard.textContent = `Human:     ${humanScore}\nComputer: ${computerScore}`
 
+let announcement = document.querySelector("#announcement");
+announcement.textContent = "START!";
+
 let choice = document.querySelector("#choices");
 choice.addEventListener("click", (e) => {
 
@@ -63,9 +68,9 @@ choice.addEventListener("click", (e) => {
     scoreBoard.textContent = `Human:     ${humanScore}\nComputer: ${computerScore}`
     
     if(humanScore === 5){
-        scoreBoard.textContent += "\nTHE HUMAN TAME THE MACHINES!!!"
+        announcement.textContent = "\nTHE HUMAN TAME THE MACHINES!!!"
     }
     else if(computerScore === 5){
-        scoreBoard.textContent += "\nTHE MACHINES ENSLAVE THE HUMANS!!!"
+        announcement.textContent = "\nTHE MACHINES ENSLAVE THE HUMANS!!!"
     }
 });
